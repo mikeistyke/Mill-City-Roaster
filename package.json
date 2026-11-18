@@ -1,20 +1,10 @@
 {
-  "name": "mill-city-mcr-10-|-2025-10kg-commercial-coffee-roaster",
+  "name": "millcity10kg",
+  "version": "1.0.0",
   "private": true,
-  "version": "0.0.0",
-  "type": "module",
+  "description": "Static HTML, CSS, and vanilla JS site for millcity10kg.com (zero build or framework dependencies).",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
-  },
-  "dependencies": {
-
-  },
-  "devDependencies": {
-    "@types/node": "^22.14.0",
-    
-    "typescript": "~5.8.2",
-    "vite": "^6.2.0"
+    "dev": "node -e \"const http=require('http'),fs=require('fs'),path=require('path'),m={'.html':'text/html; charset=utf-8','.css':'text/css; charset=utf-8','.js':'application/javascript; charset=utf-8','.jpg':'image/jpeg','.jpeg':'image/jpeg','.png':'image/png','.svg':'image/svg+xml','.xml':'application/xml; charset=utf-8','.txt':'text/plain; charset=utf-8','.json':'application/json; charset=utf-8'},r=path.resolve(process.cwd()),p=Number(process.env.PORT)||3000;http.createServer((q,s)=>{let u='/';try{u=decodeURIComponent((q.url||'/').split('?')[0]);}catch(e){s.writeHead(400);return s.end('Bad request');}if(u==='/')u='/index.html';const f=path.resolve(r,'.'+u);if(!f.startsWith(r+path.sep)||!fs.existsSync(f)||fs.statSync(f).isDirectory()){s.writeHead(404);return s.end('Not found');}s.writeHead(200,{'Content-Type':m[path.extname(f).toLowerCase()]||'application/octet-stream'});if(q.method==='HEAD')return s.end();fs.createReadStream(f).pipe(s);}).listen(p,'0.0.0.0',()=>console.log('Static preview server listening on port',p));\"",
+    "start": "npm run dev"
   }
 }
