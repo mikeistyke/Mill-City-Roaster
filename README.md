@@ -1,20 +1,7 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
+# Mill City Roaster
 
-# Run and deploy your AI Studio app
+Static website for millcity10kg.com, built with HTML, CSS, and plain JavaScript.
 
-This contains everything you need to run your app locally.
+Open `index.html` to view locally, or publish the repository root with a static hosting service. No build step, Node.js, framework, or API key is required.
 
-View your app in AI Studio: https://ai.studio/apps/8ecc35a4-eecf-4dcb-859d-bd9bf76628a1
-
-## Run Locally
-
-**Prerequisites:**  Node.js
-
-
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+Website assets are in `images/` and `documents/`. Business records, marketing materials, and historical ZIP exports are included in their own folders. ZIP exports are historical backups, not the current website. Environment files and private keys are excluded.

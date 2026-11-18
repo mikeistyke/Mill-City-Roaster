@@ -1,0 +1,1883 @@
+Delivered-To: admin@vibinginva.com
+Received: by 2002:a17:906:45a4:b0:c4d:7d28:e06e with SMTP id qs36csp1317441ejc;
+        Tue, 10 Nov 2026 09:25:24 -0800 (PST)
+X-Received: by 2002:a17:903:1b44:b0:2e8:6540:11ba with SMTP id d9443c01a7336-2edd3e2cf01mr2580205ad.20.1794331523867;
+        Tue, 10 Nov 2026 09:25:23 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1794331523; cv=none;
+        d=google.com; s=arc-20260327;
+        b=OwYBEdKCNXOAxThNC3NPUH+duVxNP5bTqzlPmSBDr9mU+YA2fJ5dkA6ZpUUEGtQbvP
+         Z/zWqZczNFax88MuDCpUnTue1P3tGj6yC2Ija9O3mg1RKGVo5p2ZHNj47wbhevvneIcT
+         DyAKy2eg7uH8C8Ec5L1nM/4EajxUpdIKxEoBIHevv1Nj89moBZqDsa2UEDl0SquS9xd0
+         U/340pYLYofOMTKbwMa1sDpHFg0GuegzNB840z5bp+RpSaw8gi44aLFlw97djL4f+k7S
+         FIBTFU0OC+TeBVS5m827vv4y5bhCIxu4kn6COTtedFr5DXLhgjGgR/nijSxbcaWvfl/E
+         cOKQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
+        h=content-transfer-encoding:mime-version:subject:to:from:date
+         :message-id:feedback-id:dkim-signature:dkim-signature;
+        bh=H69OrpmP0MmNCxZOvEei9fnE5RI+tzeQ+0Y9ouQIVfc=;
+        fh=/nu1RrVAZdr7aRbWn1LomAnFAHYep5cKQPwzENoojnk=;
+        b=gvWthfuxwi4S1TRks+zoKo7WEqeBKvqI1VH4s2mir005+Zk48RwsfmFZlS3pk2Q3+S
+         AZq19X6DD9T9y+joXmo218d4AMCWHYBgrCmT9YfWLBPqkhMiTixzTXxysQDkDpa128YL
+         52TjH8HPyCUCBZh00nDTGfNHfgA92RtqErFSOKk+mqXfkqewRVcMY0Ep5JdEUjC05I8o
+         4LoRreH6GhdM1OmrBXp42/20jbmLwKvvJG9hwc2T83F/ESMAtr38wA647qKxjkiUSFBN
+         3dTy+pbIMFdxxdfHYsgtLhxvSYiaBrUK05JMxX89h9/FI7yAlve00d5rbpSe8gZffR8p
+         0wZw==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@notify.cloudflare.com header.s=cf-bounce header.b=Kb5nbxQV;
+       dkim=pass header.i=@cloudflare-smtp.com header.s=cf2024-1 header.b=P4VUtaUB;
+       spf=pass (google.com: domain of b1aui7qdlodsiuymlablxryspdk3ailykc5copysngn4davip6zq@cf-bounce.notify.cloudflare.com designates 104.30.16.5 as permitted sender) smtp.mailfrom=b1aui7qdlodsiuymlablxryspdk3ailykc5copysngn4davip6zq@cf-bounce.notify.cloudflare.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=notify.cloudflare.com
+Return-Path: <b1aui7qdlodsiuymlablxryspdk3ailykc5copysngn4davip6zq@cf-bounce.notify.cloudflare.com>
+Received: from bg-f.cloudflare-smtp.com (bg-f.cloudflare-smtp.com. [104.30.16.5])
+        by mx.google.com with ESMTPS id d9443c01a7336-2edb6e3d539si67363855ad.142.2026.11.10.09.25.21
+        for <admin@vibinginva.com>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 10 Nov 2026 09:25:23 -0800 (PST)
+Received-SPF: pass (google.com: domain of b1aui7qdlodsiuymlablxryspdk3ailykc5copysngn4davip6zq@cf-bounce.notify.cloudflare.com designates 104.30.16.5 as permitted sender) client-ip=104.30.16.5;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@notify.cloudflare.com header.s=cf-bounce header.b=Kb5nbxQV;
+       dkim=pass header.i=@cloudflare-smtp.com header.s=cf2024-1 header.b=P4VUtaUB;
+       spf=pass (google.com: domain of b1aui7qdlodsiuymlablxryspdk3ailykc5copysngn4davip6zq@cf-bounce.notify.cloudflare.com designates 104.30.16.5 as permitted sender) smtp.mailfrom=b1aui7qdlodsiuymlablxryspdk3ailykc5copysngn4davip6zq@cf-bounce.notify.cloudflare.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=notify.cloudflare.com
+DKIM-Signature: v=1; a=rsa-sha256; s=cf-bounce; d=notify.cloudflare.com; c=relaxed/relaxed;
+	h=Subject:To:From:Date:Feedback-ID:from:reply-to:cc:resent-date
+	:resent-from:resent-to:resent-cc:in-reply-to:references:list-id:list-help
+	:list-unsubscribe:list-unsubscribe-post:list-subscribe:list-post
+	:list-owner:list-archive:otp-token:otp-token; t=1794331522; x=1794936322; bh=H
+	69OrpmP0MmNCxZOvEei9fnE5RI+tzeQ+0Y9ouQIVfc=; b=Kb5nbxQV28F2Xpc5b8Od1fIpjZrc
+	nku673Hdw+ZCgPFytLpdGvzGVyCYiuG1x0nqLmkrXUNvwf1XF2mqRnZCPPQdB2OPVp5YhduQGLc
+	xpixoma9SravmptlhMPuNp+x6QCTjQvfEEUaLHwWIhOPBUsR8hDzjv3rnyTNpsXNIpw9F3chvqg
+	wx/TqrMxlGFqXSEk2X0isbfV1c4k+bGpxZXOXFw9rNz+BIxM2YCxkRD0K+G+8+FEpzUF4dsSkXD
+	rBL3KUUUAe/9/JEtAYr7+J7CBgpjeW08FlRAYdHTyeQqv/CePNaZceBTq+EwzJka/0rkRkHHO27
+	p2X6Au4iRJY1Kw==;
+DKIM-Signature: v=1; a=rsa-sha256; s=cf2024-1; d=cloudflare-smtp.com; c=relaxed/relaxed;
+	h=Subject:To:From:Date:Feedback-ID:from:reply-to:cc:resent-date
+	:resent-from:resent-to:resent-cc:in-reply-to:references:list-id:list-help
+	:list-unsubscribe:list-unsubscribe-post:list-subscribe:list-post
+	:list-owner:list-archive:otp-token:otp-token; t=1794331522; x=1794936322; bh=H
+	69OrpmP0MmNCxZOvEei9fnE5RI+tzeQ+0Y9ouQIVfc=; b=P4VUtaUBVgkuja1lXU9XQ+7w9nPG
+	r7e7Stt4w/+/iE8NYOwcK8R0P1twuulL7L+kfpw6qoBoERIOOaYIjyLrSKjczdZmyGQu7nIPInT
+	gjxJwTz/ut5zEX2DfHHBLeOvD/J2qwCZbZ+KYMRBEZps4/pfDYhKFPTPSHYD/gPhucFFXe+x/ns
+	tR52YYrj7SWBWIRWsA9sSRv/+AoI84fVufpKki+EYLpBS8s08LX/q+cC+b+oW7eEFIymHxOyOYK
+	T8YCWAZiFuNiKSDn+Iz7o9h3f3rnqjibMgUEY2wL/zWiYMpYNlFo6XJjxyBGon0orTqmYgS5EJa
+	Y6J1batgTIGKyQ==;
+Feedback-ID: notify.cloudflare.com:5:4:Cloudflare
+Received: from authenticated-submission.invalid
+        by mx.cloudflare.net (Cloudflare Email Submission) with ESMTPSA id hw7XiwDpNQnZ; Tue, 10 Nov 2026 17:25:18 +0000
+Message-ID: <wy03mWIa9Gw0dS83HEnXCpkrVB9qEm0BjywW@notify.cloudflare.com>
+Date: Tue, 10 Nov 2026 17:25:18 +0000
+From: Cloudflare Registrar <noreply@notify.cloudflare.com>
+To: admin@vibinginva.com
+Subject: [Confirmation] You registered millcity10kg.com
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_6af3537e2028d_1037c863427c";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_6af3537e2028d_1037c863427c
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+You've successfully registered millcity10kg.com
+
+We can't wait to see what you build. Your receipt will arrive in a separa=
+te email.
+
+Manage domain: https://dash.cloudflare.com/?to=3D/0397507b7a6de70e2e3d9e8=
+03a82dc73/domains/registrations/millcity10kg.com&utm_medium=3Demail&utm_s=
+ource=3Dregistrar&utm_campaign=3Dpay-registrar-purchase-transactional
+
+Details
+Domain: millcity10kg.com
+Account: account 0397507b7a6de70e2e3d9e803a82dc73
+https://dash.cloudflare.com/?to=3D/0397507b7a6de70e2e3d9e803a82dc73&utm_m=
+edium=3Demail&utm_source=3Dregistrar&utm_campaign=3Dpay-registrar-purchas=
+e-transactional
+Registered: Until Nov 10, 2027 (Wed)
+Auto-renew: Off =C2=B7 Change: https://dash.cloudflare.com/?to=3D/0397507=
+b7a6de70e2e3d9e803a82dc73/domains/registrations/millcity10kg.com&utm_medi=
+um=3Demail&utm_source=3Dregistrar&utm_campaign=3Dpay-registrar-purchase-t=
+ransactional
+
+Your domain contact info
+Keep your contact details accurate and up to date. This information is ke=
+pt private unless your domain=E2=80=99s registry requires otherwise.
+
+Update your contact details: https://dash.cloudflare.com/?to=3D/0397507b7=
+a6de70e2e3d9e803a82dc73/domains/registrations/millcity10kg.com/contacts&u=
+tm_medium=3Demail&utm_source=3Dregistrar&utm_campaign=3Dpay-registrar-pur=
+chase-transactional
+
+---
+
+Why millions build on Cloudflare
+The best place to build with agents
+Bring your big idea to life with your favorite coding agent. Build and de=
+ploy on Cloudflare, with compute, storage, databases, and AI at your fing=
+ertips.
+Start building: https://developers.cloudflare.com/agent-setup/?utm_medium=
+=3Demail&utm_source=3Dregistrar&utm_campaign=3Dpay-registrar-purchase-tra=
+nsactional
+
+Blazingly fast everywhere
+Run apps and agents on our global network with serverless compute, databa=
+ses, storage, queues, and AI =E2=80=94 all on one platform.
+Learn more: https://developers.cloudflare.com/workers/?utm_medium=3Demail=
+&utm_source=3Dregistrar&utm_campaign=3Dpay-registrar-purchase-transaction=
+al
+
+Block threats, day and night
+Get around-the-clock protection for your apps, networks, and users.
+Strengthen your security: https://developers.cloudflare.com/reference-arc=
+hitecture/architectures/security/?utm_medium=3Demail&utm_source=3Dregistr=
+ar&utm_campaign=3Dpay-registrar-purchase-transactional
+
+---
+Resources and important notices
+Domain renewals: https://developers.cloudflare.com/registrar/account-opti=
+ons/renew-domains?utm_source=3Dregistrar&utm_campaign=3Dpay-registrar-pur=
+chase-transactional
+
+Domain Registration Agreement: https://www.cloudflare.com/domain-registra=
+tion-agreement?utm_medium=3Demail&utm_source=3Dregistrar&utm_campaign=3Dp=
+ay-registrar-purchase-transactional
+Self-Service Subscription Agreement: https://www.cloudflare.com/terms?utm=
+_medium=3Demail&utm_source=3Dregistrar&utm_campaign=3Dpay-registrar-purch=
+ase-transactional
+Privacy Policy: https://www.cloudflare.com/privacypolicy?utm_medium=3Dema=
+il&utm_source=3Dregistrar&utm_campaign=3Dpay-registrar-purchase-transacti=
+onal
+Registrant Rights and Responsibilities: https://www.icann.org/resources/p=
+ages/benefits-2013-09-16-en
+
+Why am I receiving this email?
+You received this email because a domain was registered in your account.
+
+
+Copyright =C2=A9 2026 Cloudflare, Inc.
+101 Townsend Street, San Francisco, CA 94107
+
+www.cloudflare.com: https://www.cloudflare.com/
+Community: https://community.cloudflare.com/
+Privacy Policy: https://www.cloudflare.com/privacypolicy/
+Facebook: https://www.facebook.com/Cloudflare/
+X: https://x.com/Cloudflare
+LinkedIn: https://www.linkedin.com/company/cloudflare
+
+----==_mimepart_6af3537e2028d_1037c863427c
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html>
+<html
+  xmlns=3D"http://www.w3.org/1999/xhtml"
+  xmlns:v=3D"urn:schemas-microsoft-com:vml"
+  xmlns:o=3D"urn:schemas-microsoft-com:office:office"
+>
+  <head>
+    <meta charset=3D"utf-8" />
+    <meta http-equiv=3D"X-UA-Compatible" content=3D"IE=3Dedge" />
+    <meta name=3D"viewport" content=3D"width=3Ddevice-width, initial-scal=
+e=3D1.0" />
+    <!--[if gte mso 9]><xml>
+        <o:OfficeDocumentSettings>
+          <o:AllowPNG />
+          <o:PixelsPerInch>96</o:PixelsPerInch>
+        </o:OfficeDocumentSettings>
+      </xml><![endif]-->
+    <!--Variables-->
+    <title>[Confirmation] You registered millcity10kg.com</title>
+    <link
+      href=3D"https://fonts.googleapis.com/css?family=3DInter:300,300i,40=
+0,400i,600,600i,700,700i,800,800i"
+      rel=3D"stylesheet"
+    />
+    <style>
+      .registration-value { overflow-wrap: anywhere; word-break: break-wo=
+rd; }
+      /* Keep email-client-generated domain links visually consistent wit=
+h plain text. */
+      .registration-domain a {
+        color: inherit !important;
+        text-decoration: none !important;
+        font-size: inherit !important;
+        font-family: inherit !important;
+        font-weight: inherit !important;
+        line-height: inherit !important;
+      }
+      .registration-domain a[x-apple-data-detectors] {
+        color: inherit !important;
+        text-decoration: none !important;
+      }
+      /* CLIENT-SPECIFIC STYLES */
+      img {
+        -ms-interpolation-mode: bicubic;
+      }
+      /* Force IE to smoothly render resized images. */
+      #outlook a {
+        padding: 0;
+      }
+      /* Force Outlook 2007 and up to provide a "view in browser" message=
+. */
+      table {
+        mso-table-lspace: 0pt;
+        mso-table-rspace: 0pt;
+      }
+      /* Remove spacing between tables in Outlook 2007 and up. */
+      .ReadMsgBody {
+        width: 100%;
+      }
+      .ExternalClass {
+        width: 100%;
+      }
+      /* Force Outlook.com to display emails at full width. */
+      p,
+      a,
+      li,
+      td,
+      blockquote {
+        mso-line-height-rule: exactly;
+      }
+      /* Force Outlook to render line heights as they're originally set. =
+*/
+      a[href^=3D"tel"],
+      a[href^=3D"sms"] {
+        color: inherit;
+        cursor: default;
+        text-decoration: none;
+      }
+      /* Force mobile devices to inherit declared link styles. */
+      p,
+      a,
+      li,
+      td,
+      body,
+      table,
+      blockquote {
+        -ms-text-size-adjust: 100%;
+        -webkit-text-size-adjust: 100%;
+      }
+      /* Prevent Windows- and Webkit-based mobile platforms from changing=
+ declared text sizes. */
+      .ExternalClass,
+      .ExternalClass p,
+      .ExternalClass td,
+      .ExternalClass div,
+      .ExternalClass span,
+      .ExternalClass font {
+        line-height: 100%;
+      }
+      /* Force Outlook.com to display line heights normally. */
+      table {
+        border-collapse: collapse;
+      }
+
+      html {
+        -webkit-text-size-adjust: none;
+      }
+
+      #gmailModule,
+      .mobileOnly {
+        display: none !important;
+      }
+      /*Hide Full-Width Image on Desktop*/
+
+      a,
+      a:hover {
+        color: #ff6633 !important;
+        text-decoration: none !important;
+      }
+
+      .button a,
+      .button a:hover {
+        color: #FFFFFF !important;
+        text-decoration: none !important;
+      }
+
+      .footer a,
+      .footer a:hover {
+        color: #8f8f8f !important;
+        text-decoration: none !important;
+      }
+
+      a[x-apple-data-detectors] {
+        color: inherit !important;
+        text-decoration: none !important;
+        font-size: inherit !important;
+        font-family: inherit !important;
+        font-weight: inherit !important;
+        line-height: inherit !important;
+      }
+
+      @media only screen and (max-width: 650px) {
+        #bodyTable {
+          width: 100% !important;
+        }
+        #logo-image {
+          max-width: 40% !important;
+        }
+
+        #headline,
+        #marketingHeadline {
+          font-size: 20px !important;
+          line-height: 28px !important;
+          font-weight: 600 !important;
+        }
+
+        img {
+          width: auto !important;
+          max-width: 100% !important;
+          height: auto !important;
+        }
+        .tableStack {
+          width: 100% !important;
+        }
+        table.buttonStack {
+          margin-top: 10px !important;
+        }
+        td.buttonStack {
+          padding-top: 16px !important;
+        }
+
+        td.mobImg {
+          width: 28% !important;
+          padding-right: 15px !important;
+        }
+        td.mobText {
+          width: 68% !important;
+        }
+
+        #receiptNote,
+        #fullTextContent,
+        #fullTextContent2,
+        #fullTextContent3,
+        #fullTextContent4,
+        #resourcesText, #renewals, #whois, #nextSteps, #notices, #whyRece=
+ived {
+          font-size: 14px;
+          line-height: 20px;
+        }
+
+        .subheading {
+          font-size: 16px !important;
+          line-height: 22px !important;
+        }
+
+        #buttonText a {
+          font-size: 14px !important;
+        }
+
+        table.mobileImageWidth {
+          width: 28% !important;
+        }
+        table.mobileTextWidth {
+          width: 68% !important;
+        }
+
+        .stack-img {
+          padding-top: 10px !important;
+          padding-right: 0% !important;
+          padding-bottom: 10px !important;
+          padding-left: 0% !important;
+          width: 90% !important;
+        }
+
+        .stack {
+          padding-top: 4px !important;
+          padding-right: 5% !important;
+          padding-bottom: 16px !important;
+          padding-left: 5% !important;
+          width: 90% !important;
+        }
+
+        td.mobileTopPad {
+          padding-top: 20px !important;
+        }
+        table.mobileTopPad {
+          margin-top: 20px !important;
+        }
+
+        .desktopPad,
+        #gmailModule {
+          display: none !important;
+        }
+        .left img {
+          margin-left: 0 !important;
+        }
+        .center img {
+          margin-left: auto !important;
+          margin-right: auto !important;
+        }
+        .center table {
+          margin-right: auto;
+          margin-left: auto;
+        }
+        .left {
+          text-align: left !important;
+        }
+        .center {
+          text-align: center !important;
+        }
+        .noPad {
+          padding-top: 0px !important;
+          padding-right: 0px !important;
+          padding-bottom: 0px !important;
+          padding-left: 0px !important;
+        }
+        .noSidePad {
+          padding-right: 0px !important;
+          padding-left: 0px !important;
+        }
+        .noBorder {
+          border: 0px !important;
+        }
+        hr {
+          margin-right: auto !important;
+          margin-left: auto !important;
+        }
+        .mobileOnly {
+          display: block !important;
+        }
+        .mobquote {
+          font-size: 20px !important;
+          line-height: 26px !important;
+          margin: 0px 15px !important;
+        }
+        .padding5p {
+          padding-right: 5% !important;
+        }
+        .mobwidth100 {
+          max-width: 100px !important;
+        }
+      }
+    </style>
+    <!--[if gte mso 9]>
+      <style type=3D"text/css">
+        td,
+        p,
+        ul,
+        ol,
+        li {
+          font-family: Arial, sans-serif !important;
+        }
+        ul,
+        ol {
+          margin: 0px 0px 0px 26px !important;
+          padding: 0px !important;
+          list-style-position: inside !important;
+        }
+        table.outlookPadColumn {
+          width: 34% !important;
+          padding-right: 2% !important;
+        }
+        td.outlookFloat {
+          margin-left: 40px;
+          padding-right: 0px !important;
+        }
+      </style>
+    <![endif]-->
+  </head>
+  <body
+    bgcolor=3D"#f6f6f6"
+    style=3D"
+      background: #f6f6f6;
+      margin: 0;
+      padding: 0;
+      mso-padding-alt: 0px 0px 0px 0px;
+    "
+  >
+    <div style=3D"display:none; max-height:0; overflow:hidden;">Your doma=
+in is registered. Your receipt will arrive in a separate email.</div>
+    <table
+      role=3D"presentation"
+      width=3D"100%"
+      border=3D"0"
+      cellspacing=3D"0"
+      cellpadding=3D"0"
+      style=3D"background: #f6f6f6; mso-padding-alt: 0px 0px 0px 0px"
+    >
+      <tbody>
+        <tr>
+          <td>
+            <!--Body Table-->
+            <table
+              role=3D"presentation"
+              id=3D"bodyTable"
+              width=3D"650"
+              border=3D"0"
+              cellspacing=3D"0"
+              cellpadding=3D"0"
+              align=3D"center"
+              style=3D"margin-left: auto; margin-right: auto"
+            >
+              <!--Preheader Container-->
+              <tbody>
+                <tr class=3D"desktopPad">
+                  <td
+                    class=3D"footer"
+                    style=3D"
+                      white-space: normal;
+                      color: #8f8f8f;
+                      font-family: Inter, Helvetica, Arial, sans-serif;
+                      font-size: 11px;
+                      padding-top: 7px;
+                      padding-bottom: 7px;
+                      text-align: center;
+                    "
+                  >
+                    <div class=3D"content" id=3D"preheaderText"></div>
+                  </td>
+                </tr>
+                <!--/Preheader Container-->
+                <tr>
+                  <td>
+                    <table
+                      role=3D"presentation"
+                      id=3D"container"
+                      class=3D"container"
+                      width=3D"100%"
+                      border=3D"0"
+                      cellpadding=3D"0"
+                      cellspacing=3D"0"
+                      style=3D"border-collapse: collapse"
+                    >
+                      <tr class=3D"module" id=3D"header">
+                        <td>
+                          <table
+                            role=3D"presentation"
+                            width=3D"100%"
+                            border=3D"0"
+                            cellpadding=3D"0"
+                            cellspacing=3D"0"
+                            style=3D"min-width: 100%"
+                          >
+                            <!--[if gte mso 9]>
+<tr>
+<td>
+<table role=3D"presentation" width=3D"650" border=3D"0" cellpadding=3D"0"=
+ cellspacing=3D"0" style=3D"width:650px;">
+<![endif]-->
+                            <tbody>
+                              <tr
+                                style=3D"
+                                  white-space: nowrap;
+                                  background-color: #ffffff;
+                                "
+                              >
+                                <td
+                                  class=3D"stack"
+                                  style=3D"
+                                    border-top: 10px solid #f38020;
+                                    white-space: normal;
+                                    padding-top: 25px;
+                                    padding-left: 40px;
+                                    padding-bottom: 25px;
+                                    padding-right: 40px;
+                                    background-color: #ffffff;
+                                  "
+                                >
+                                  <!--Left-->
+                                  <table
+                                    class=3D"tableStack"
+                                    role=3D"presentation"
+                                    width=3D"48%"
+                                    border=3D"0"
+                                    cellpadding=3D"0"
+                                    cellspacing=3D"0"
+                                    align=3D"left"
+                                  >
+                                    <tbody>
+                                      <tr>
+                                        <td class=3D"stack-img">
+                                          <div class=3D"snippet" id=3D"lo=
+go">
+                                            <table
+                                              role=3D"presentation"
+                                              width=3D"100%"
+                                              cellpadding=3D"0"
+                                              cellspacing=3D"0"
+                                              border=3D"0"
+                                            >
+                                              <tbody>
+                                                <tr>
+                                                  <td class=3D"left">
+                                                    <a
+                                                      href=3D"https://www=
+.cloudflare.com/"
+                                                      target=3D"_blank"
+                                                       ><img
+                                                        id=3D"logo-image"=
+
+                                                        src=3D"https://in=
+fo.cloudflare.com/rs/713-XSC-918/images/CF_logo_horizontal_blktype_1955x2=
+85.png?version=3D0"
+                                                        alt=3D"Cloudflare=
+ logo"
+                                                        height=3D"37"
+                                                        width=3D"260"
+                                                        constrain=3D"true=
+"
+                                                        imagepreview=3D"f=
+alse"
+                                                        style=3D"border-s=
+tyle: none;"
+                                                    /></a>
+                                                  </td>
+                                                </tr>
+                                              </tbody>
+                                            </table>
+                                          </div>
+                                        </td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                  <!--/Left-->
+                                  <!--Right-->
+                                  <table
+                                    class=3D"tableStack"
+                                    role=3D"presentation"
+                                    width=3D"48%"
+                                    border=3D"0"
+                                    cellpadding=3D"0"
+                                    cellspacing=3D"0"
+                                    align=3D"right"
+                                  >
+                                    <tbody>
+                                      <tr>
+                                        <td
+                                          class=3D"center"
+                                          style=3D"
+                                            text-align: right;
+                                            color: #000000;
+                                            font-family: Inter, Helvetica=
+, Arial,
+                                              sans-serif;
+                                            font-size: 14px;
+                                            line-height: 21px;
+                                          "
+                                        >
+                                          <div
+                                            class=3D"content"
+                                            id=3D"headerHeadline"
+                                          ></div>
+                                        </td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                  <!--/Right-->
+                                </td>
+                              </tr>
+                              <!--[if gte mso 9]>
+</table>
+</td>
+</tr>
+<![endif]-->
+                            </tbody>
+                          </table>
+                        </td>
+                      </tr>
+                      <tr class=3D"module desktopPad spacer">
+                        <td>
+                          <table
+                            role=3D"presentation"
+                            border=3D"0"
+                            cellpadding=3D"0"
+                            cellspacing=3D"0"
+                            style=3D"min-width: 100%"
+                          >
+                            <!--[if gte mso 9]>
+<tr>
+<td>
+<table role=3D"presentation" width=3D"650" border=3D"0" cellpadding=3D"0"=
+ cellspacing=3D"0" style=3D"width:650px;">
+<![endif]-->
+                            <tbody>
+                              <tr
+                                style=3D"
+                                  white-space: nowrap;
+                                  background-color: #ffffff;
+                                "
+                              >
+                                <td
+                                  class=3D"desktopPad"
+                                  height=3D"25"
+                                  style=3D"
+                                    background-color: #ffffff;
+                                    line-height: 25px;
+                                    font-size: 25px;
+                                  "
+                                >
+                                  &nbsp;
+                                </td>
+                              </tr>
+                              <!--[if gte mso 9]>
+</table>
+</td>
+</tr>
+<![endif]-->
+                            </tbody>
+                          </table>
+                        </td>
+                      </tr>
+
+<tr class=3D"module" id=3D"headlineModule">
+                        <td>
+                          <!--Title Text-->
+                          <table
+                            role=3D"presentation"
+                            width=3D"100%"
+                            border=3D"0"
+                            cellpadding=3D"0"
+                            cellspacing=3D"0"
+                            style=3D"min-width: 100%"
+                          >
+                            <!--[if gte mso 9]>
+<tr>
+<td>
+<table role=3D"presentation" width=3D"650" border=3D"0" cellpadding=3D"0"=
+ cellspacing=3D"0" style=3D"width:650px;">
+<![endif]-->
+                            <tbody>
+                              <tr
+                                style=3D"
+                                  white-space: nowrap;
+                                  background-color: #ffffff;
+                                "
+                              >
+                                <td
+                                  class=3D"stack"
+                                  style=3D"
+                                    font-weight: 600;
+                                    color: #000000;
+                                    text-align: left;
+                                    white-space: normal;
+                                    font-family: Inter, Helvetica, Arial,=
+
+                                      sans-serif;
+                                    font-size: 26px;
+                                    line-height: 32px;
+                                    padding-left: 40px;
+                                    padding-right: 40px;
+                                    background-color: #ffffff;
+                                  "
+                                >
+                                  <div class=3D"content" id=3D"headline">=
+<h1 style=3D"font:inherit;margin:0;overflow-wrap:anywhere;word-break:brea=
+k-word;">You've successfully registered <span class=3D"registration-domai=
+n">millcity10kg.com</span></h1></div>
+                                  <p class=3D"content" id=3D"receiptNote"=
+ style=3D"font-size:15px;line-height:20px;font-weight:normal;margin:16px =
+0 0;">We can't wait to see what you build. Your receipt will arrive in a =
+separate email.</p>
+                                </td>
+                              </tr>
+                              <!--[if gte mso 9]>
+</table>
+</td>
+</tr>
+<![endif]-->
+                            </tbody>
+                          </table>
+                          <!--/Title Text-->
+                        </td>
+                      </tr>
+                      <!-- END HEADLINE -->
+<tr class=3D"module desktopPad spacer">
+                        <td>
+                          <table
+                            role=3D"presentation"
+                            border=3D"0"
+                            cellpadding=3D"0"
+                            cellspacing=3D"0"
+                            style=3D"min-width: 100%"
+                          >
+                            <!--[if gte mso 9]>
+<tr>
+<td>
+<table role=3D"presentation" width=3D"650" border=3D"0" cellpadding=3D"0"=
+ cellspacing=3D"0" style=3D"width:650px;">
+<![endif]-->
+                            <tbody>
+                              <tr
+                                style=3D"
+                                  white-space: nowrap;
+                                  background-color: #ffffff;
+                                "
+                              >
+                                <td
+                                  class=3D"desktopPad"
+                                  height=3D"25"
+                                  style=3D"
+                                    background-color: #ffffff;
+                                    line-height: 25px;
+                                    font-size: 25px;
+                                  "
+                                >
+                                  &nbsp;
+                                </td>
+                              </tr>
+                              <!--[if gte mso 9]>
+</table>
+</td>
+</tr>
+<![endif]-->
+                            </tbody>
+                          </table>
+                        </td>
+                      </tr>
+                      <!-- END SPACING -->
+<tr class=3D"module" id=3D"buttonModule">
+                        <td>
+                          <!--Button Module-->
+                          <table
+                            role=3D"presentation"
+                            width=3D"100%"
+                            border=3D"0"
+                            cellpadding=3D"0"
+                            cellspacing=3D"0"
+                            style=3D"min-width: 100%"
+                          >
+                            <!--[if gte mso 9]>
+<tr>
+<td>
+<table role=3D"presentation" width=3D"650" border=3D"0" cellpadding=3D"0"=
+ cellspacing=3D"0" style=3D"width:650px;">
+<![endif]-->
+                            <tbody>
+                              <tr
+                                style=3D"
+                                  white-space: nowrap;
+                                  background-color: #ffffff;
+                                "
+                              >
+                                <td
+                                  class=3D"stack"
+                                  style=3D"
+                                    text-align: left;
+                                    white-space: normal;
+                                    background-color: #ffffff;
+                                    padding-left: 40px;
+                                    padding-right: 40px;
+                                    padding-top: 0px;
+                                    padding-bottom: 0px;
+                                  "
+                                >
+                                  <!--Button-->
+                                  <table
+                                    role=3D"presentation"
+                                    class=3D"button"
+                                    border=3D"0"
+                                    cellpadding=3D"0"
+                                    cellspacing=3D"0"
+                                    bgcolor=3D"#FF6633"
+                                    style=3D"
+                                      border-radius: 100px; -webkit-borde=
+r-radius: 100px;
+                                      border: solid #ff6633 0px;
+                                      display: inline-block;
+                                    "
+                                  >
+                                    <tbody>
+                                      <tr>
+                                        <td
+                                          style=3D"
+                                            font-family: Inter, Helvetica=
+, Arial,
+                                              sans-serif;
+                                            font-size: 15px;
+                                            padding-top: 12px;
+                                            padding-right: 27px;
+                                            padding-bottom: 12px;
+                                            padding-left: 27px;
+                                            text-align: center;
+                                          "
+                                        >
+                                          <div class=3D"content" id=3D"bu=
+ttonText"><a href=3D"https://dash.cloudflare.com/?to=3D/0397507b7a6de70e2=
+e3d9e803a82dc73/domains/registrations/millcity10kg.com&amp;utm_medium=3De=
+mail&amp;utm_source=3Dregistrar&amp;utm_campaign=3Dpay-registrar-purchase=
+-transactional" style=3D"text-decoration:none;color:#FFFFFF;" target=3D"_=
+blank">Manage domain</a></div>
+                                        </td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                  <!--/Button-->
+                                </td>
+                              </tr>
+                              <!--[if gte mso 9]>
+</table>
+</td>
+</tr>
+<![endif]-->
+                            </tbody>
+                          </table>
+                          <!--/Button Module-->
+                        </td>
+                      </tr>
+                      <!-- END BUTTON -->
+<tr class=3D"module desktopPad spacer">
+                        <td>
+                          <table
+                            role=3D"presentation"
+                            border=3D"0"
+                            cellpadding=3D"0"
+                            cellspacing=3D"0"
+                            style=3D"min-width: 100%"
+                          >
+                            <!--[if gte mso 9]>
+<tr>
+<td>
+<table role=3D"presentation" width=3D"650" border=3D"0" cellpadding=3D"0"=
+ cellspacing=3D"0" style=3D"width:650px;">
+<![endif]-->
+                            <tbody>
+                              <tr
+                                style=3D"
+                                  white-space: nowrap;
+                                  background-color: #ffffff;
+                                "
+                              >
+                                <td
+                                  class=3D"desktopPad"
+                                  height=3D"25"
+                                  style=3D"
+                                    background-color: #ffffff;
+                                    line-height: 25px;
+                                    font-size: 25px;
+                                  "
+                                >
+                                  &nbsp;
+                                </td>
+                              </tr>
+                              <!--[if gte mso 9]>
+</table>
+</td>
+</tr>
+<![endif]-->
+                            </tbody>
+                          </table>
+                        </td>
+                      </tr>
+                      <!-- END SPACING -->
+<tr class=3D"module" id=3D"fullTextContentModule">
+                        <td>
+                          <!--Full Text-->
+                          <table
+                            role=3D"presentation"
+                            width=3D"100%"
+                            border=3D"0"
+                            cellpadding=3D"0"
+                            cellspacing=3D"0"
+                            style=3D"min-width: 100%"
+                          >
+                            <!--[if gte mso 9]>
+<tr>
+<td>
+<table role=3D"presentation" width=3D"650" border=3D"0" cellpadding=3D"0"=
+ cellspacing=3D"0" style=3D"width:650px;">
+<![endif]-->
+                            <tbody>
+                              <tr
+                                style=3D"
+                                  white-space: nowrap;
+                                  background-color: #ffffff;
+                                "
+                              >
+                                <td
+                                  class=3D"stack"
+                                  style=3D"
+                                    color: #000000;
+                                    text-align: left;
+                                    white-space: normal;
+                                    font-family: Inter, Helvetica, Arial,=
+
+                                      sans-serif;
+                                    font-size: 15px;
+                                    line-height: 20px;
+                                    padding-left: 40px;
+                                    padding-right: 40px;
+                                    background-color: #ffffff;
+                                    font-weight: normal;
+                                  "
+                                >
+                                  <h2 class=3D"subheading" style=3D"font-=
+size:15px;line-height:20px;font-weight:bold;margin:0 0 12px;">Details</h2=
+>
+                                  <div class=3D"content" id=3D"fullTextCo=
+ntent" style=3D"padding:4px 16px;background-color:#f7f7f8;border:1px soli=
+d #d9d9d9;">
+<table aria-label=3D"Details" width=3D"100%" border=3D"0" cellpadding=3D"=
+0" cellspacing=3D"0" style=3D"width:100%;table-layout:fixed;border-collap=
+se:collapse;font-family:inherit;font-size:inherit;line-height:inherit;">
+<tbody>
+<tr>
+<th scope=3D"row" width=3D"120" align=3D"left" valign=3D"top" style=3D"wi=
+dth:120px;box-sizing:border-box;padding:8px 8px 8px 0;border-bottom:1px s=
+olid #d9d9d9;color:#333333;font-weight:bold;text-align:left;">Domain</th>=
+
+<td valign=3D"top" style=3D"padding:8px 0;border-bottom:1px solid #d9d9d9=
+;color:#222222;overflow-wrap:anywhere;word-wrap:break-word;"><span class=3D=
+"registration-value registration-domain">millcity10kg.com</span></td>
+</tr>
+<tr>
+<th scope=3D"row" width=3D"120" align=3D"left" valign=3D"top" style=3D"wi=
+dth:120px;box-sizing:border-box;padding:8px 8px 8px 0;border-bottom:1px s=
+olid #d9d9d9;color:#333333;font-weight:bold;text-align:left;">Account</th=
+>
+<td valign=3D"top" style=3D"padding:8px 0;border-bottom:1px solid #d9d9d9=
+;color:#222222;overflow-wrap:anywhere;word-wrap:break-word;"><a class=3D"=
+registration-value" href=3D"https://dash.cloudflare.com/?to=3D/0397507b7a=
+6de70e2e3d9e803a82dc73&amp;utm_medium=3Demail&amp;utm_source=3Dregistrar&=
+amp;utm_campaign=3Dpay-registrar-purchase-transactional" style=3D"color:#=
+ff6633;text-decoration:underline;" target=3D"_blank">account 0397507b7a6d=
+e70e2e3d9e803a82dc73</a></td>
+</tr>
+<tr>
+<th scope=3D"row" width=3D"120" align=3D"left" valign=3D"top" style=3D"wi=
+dth:120px;box-sizing:border-box;padding:8px 8px 8px 0;border-bottom:1px s=
+olid #d9d9d9;color:#333333;font-weight:bold;text-align:left;">Registered<=
+/th>
+<td valign=3D"top" style=3D"padding:8px 0;border-bottom:1px solid #d9d9d9=
+;color:#222222;overflow-wrap:anywhere;word-wrap:break-word;">Until Nov 10=
+, 2027 (Wed)</td>
+</tr>
+<tr>
+<th scope=3D"row" width=3D"120" align=3D"left" valign=3D"top" style=3D"wi=
+dth:120px;box-sizing:border-box;padding:8px 8px 8px 0;color:#333333;font-=
+weight:bold;text-align:left;">Auto-renew</th>
+<td valign=3D"top" style=3D"padding:8px 0;color:#222222;overflow-wrap:any=
+where;word-wrap:break-word;">Off&nbsp;<span style=3D"color:#888888;">&mid=
+dot;</span>&nbsp;<a href=3D"https://dash.cloudflare.com/?to=3D/0397507b7a=
+6de70e2e3d9e803a82dc73/domains/registrations/millcity10kg.com&amp;utm_med=
+ium=3Demail&amp;utm_source=3Dregistrar&amp;utm_campaign=3Dpay-registrar-p=
+urchase-transactional" style=3D"color:#ff6633;" target=3D"_blank">Change<=
+/a></td>
+</tr>
+
+</tbody>
+</table></div>
+                                </td>
+                              </tr>
+                              <!--[if gte mso 9]>
+</table>
+</td>
+</tr>
+<![endif]-->
+                            </tbody>
+                          </table>
+                          <!--/Full Text-->
+                        </td>
+                      </tr>
+                      <!-- END OF SUBHEADLINE -->
+<tr class=3D"module desktopPad spacer">
+                        <td>
+                          <table
+                            role=3D"presentation"
+                            border=3D"0"
+                            cellpadding=3D"0"
+                            cellspacing=3D"0"
+                            style=3D"min-width: 100%"
+                          >
+                            <!--[if gte mso 9]>
+<tr>
+<td>
+<table role=3D"presentation" width=3D"650" border=3D"0" cellpadding=3D"0"=
+ cellspacing=3D"0" style=3D"width:650px;">
+<![endif]-->
+                            <tbody>
+                              <tr
+                                style=3D"
+                                  white-space: nowrap;
+                                  background-color: #ffffff;
+                                "
+                              >
+                                <td
+                                  class=3D"desktopPad"
+                                  height=3D"25"
+                                  style=3D"
+                                    background-color: #ffffff;
+                                    line-height: 25px;
+                                    font-size: 25px;
+                                  "
+                                >
+                                  &nbsp;
+                                </td>
+                              </tr>
+                              <!--[if gte mso 9]>
+</table>
+</td>
+</tr>
+<![endif]-->
+                            </tbody>
+                          </table>
+                        </td>
+                      </tr>
+                      <!-- END SPACING -->
+<tr class=3D"module" id=3D"whoisModule">
+                        <td>
+                          <!--Full Text-->
+                          <table
+                            role=3D"presentation"
+                            width=3D"100%"
+                            border=3D"0"
+                            cellpadding=3D"0"
+                            cellspacing=3D"0"
+                            style=3D"min-width: 100%"
+                          >
+                            <!--[if gte mso 9]>
+<tr>
+<td>
+<table role=3D"presentation" width=3D"650" border=3D"0" cellpadding=3D"0"=
+ cellspacing=3D"0" style=3D"width:650px;">
+<![endif]-->
+                            <tbody>
+                              <tr
+                                style=3D"
+                                  white-space: nowrap;
+                                  background-color: #ffffff;
+                                "
+                              >
+                                <td
+                                  class=3D"stack"
+                                  style=3D"
+                                    color: #000000;
+                                    text-align: left;
+                                    white-space: normal;
+                                    font-family: Inter, Helvetica, Arial,=
+
+                                      sans-serif;
+                                    font-size: 15px;
+                                    line-height: 20px;
+                                    padding-left: 40px;
+                                    padding-right: 40px;
+                                    background-color: #ffffff;
+                                    font-weight: normal;
+                                  "
+                                >
+                                  <div class=3D"content" id=3D"whois"><st=
+rong class=3D"subheading">Your domain contact info</strong><p style=3D"ma=
+rgin:0;">Keep your contact details accurate and up to date. This informat=
+ion is kept private unless your domain=E2=80=99s registry requires otherw=
+ise.</p><p style=3D"margin:12px 0 0;"><a href=3D"https://dash.cloudflare.=
+com/?to=3D/0397507b7a6de70e2e3d9e803a82dc73/domains/registrations/millcit=
+y10kg.com/contacts&amp;utm_medium=3Demail&amp;utm_source=3Dregistrar&amp;=
+utm_campaign=3Dpay-registrar-purchase-transactional" style=3D"color:#ff66=
+33;" target=3D"_blank">Update your contact details</a></p></div>
+                                </td>
+                              </tr>
+                              <!--[if gte mso 9]>
+</table>
+</td>
+</tr>
+<![endif]-->
+                            </tbody>
+                          </table>
+                          <!--/Full Text-->
+                        </td>
+                      </tr>
+                      <!-- END OF SUBHEADLINE -->
+<tr class=3D"module desktopPad spacer">
+                        <td>
+                          <table
+                            role=3D"presentation"
+                            border=3D"0"
+                            cellpadding=3D"0"
+                            cellspacing=3D"0"
+                            style=3D"min-width: 100%"
+                          >
+                            <!--[if gte mso 9]>
+<tr>
+<td>
+<table role=3D"presentation" width=3D"650" border=3D"0" cellpadding=3D"0"=
+ cellspacing=3D"0" style=3D"width:650px;">
+<![endif]-->
+                            <tbody>
+                              <tr
+                                style=3D"
+                                  white-space: nowrap;
+                                  background-color: #ffffff;
+                                "
+                              >
+                                <td
+                                  class=3D"desktopPad"
+                                  height=3D"25"
+                                  style=3D"
+                                    background-color: #ffffff;
+                                    line-height: 25px;
+                                    font-size: 25px;
+                                  "
+                                >
+                                  &nbsp;
+                                </td>
+                              </tr>
+                              <!--[if gte mso 9]>
+</table>
+</td>
+</tr>
+<![endif]-->
+                            </tbody>
+                          </table>
+                        </td>
+                      </tr>
+                      <!-- END SPACING -->
+<tr class=3D"module" id=3D"nextStepsModule">
+                        <td>
+                          <!--Full Text-->
+                          <table
+                            role=3D"presentation"
+                            width=3D"100%"
+                            border=3D"0"
+                            cellpadding=3D"0"
+                            cellspacing=3D"0"
+                            style=3D"min-width: 100%"
+                          >
+                            <!--[if gte mso 9]>
+<tr>
+<td>
+<table role=3D"presentation" width=3D"650" border=3D"0" cellpadding=3D"0"=
+ cellspacing=3D"0" style=3D"width:650px;">
+<![endif]-->
+                            <tbody>
+                              <tr
+                                style=3D"
+                                  white-space: nowrap;
+                                  background-color: #ffffff;
+                                "
+                              >
+                                <td
+                                  class=3D"stack"
+                                  style=3D"
+                                    color: #000000;
+                                    text-align: left;
+                                    white-space: normal;
+                                    font-family: Inter, Helvetica, Arial,=
+
+                                      sans-serif;
+                                    font-size: 15px;
+                                    line-height: 20px;
+                                    padding-left: 40px;
+                                    padding-right: 40px;
+                                    background-color: #ffffff;
+                                    font-weight: normal;
+                                  "
+                                >
+                                  <div class=3D"content" id=3D"nextSteps"=
+ style=3D"border-top:1px solid #d9d9d9;padding-top:24px;"><h2 id=3D"marke=
+tingHeadline" style=3D"font-size:26px;line-height:32px;font-weight:600;ma=
+rgin:0 0 16px;">Why millions build on Cloudflare</h2><p style=3D"margin:0=
+;"><strong>The best place to build with agents</strong><br>Bring your big=
+ idea to life with your favorite coding agent. Build and deploy on Cloudf=
+lare, with compute, storage, databases, and AI at your fingertips.</p><p =
+style=3D"margin:12px 0 16px;"><a href=3D"https://developers.cloudflare.co=
+m/agent-setup/?utm_medium=3Demail&amp;utm_source=3Dregistrar&amp;utm_camp=
+aign=3Dpay-registrar-purchase-transactional" style=3D"color:#ff6633;" tar=
+get=3D"_blank" >Start building</a></p><p style=3D"margin:0;"><strong>Blaz=
+ingly fast everywhere</strong><br>Run apps and agents on our global netwo=
+rk with serverless compute, databases, storage, queues, and AI =E2=80=94 =
+all on one platform.</p><p style=3D"margin:12px 0 16px;"><a href=3D"https=
+://developers.cloudflare.com/workers/?utm_medium=3Demail&amp;utm_source=3D=
+registrar&amp;utm_campaign=3Dpay-registrar-purchase-transactional" style=3D=
+"color:#ff6633;" target=3D"_blank" aria-label=3D"Learn more: Blazingly fa=
+st everywhere">Learn more</a></p><p style=3D"margin:0;"><strong>Block thr=
+eats, day and night</strong><br>Get around-the-clock protection for your =
+apps, networks, and users.</p><p style=3D"margin:12px 0 16px;"><a href=3D=
+"https://developers.cloudflare.com/reference-architecture/architectures/s=
+ecurity/?utm_medium=3Demail&amp;utm_source=3Dregistrar&amp;utm_campaign=3D=
+pay-registrar-purchase-transactional" style=3D"color:#ff6633;" target=3D"=
+_blank">Strengthen your security</a></p></div>
+                                </td>
+                              </tr>
+                              <!--[if gte mso 9]>
+</table>
+</td>
+</tr>
+<![endif]-->
+                            </tbody>
+                          </table>
+                          <!--/Full Text-->
+                        </td>
+                      </tr>
+                      <!-- END OF SUBHEADLINE -->
+<tr class=3D"module desktopPad spacer">
+                        <td>
+                          <table
+                            role=3D"presentation"
+                            border=3D"0"
+                            cellpadding=3D"0"
+                            cellspacing=3D"0"
+                            style=3D"min-width: 100%"
+                          >
+                            <!--[if gte mso 9]>
+<tr>
+<td>
+<table role=3D"presentation" width=3D"650" border=3D"0" cellpadding=3D"0"=
+ cellspacing=3D"0" style=3D"width:650px;">
+<![endif]-->
+                            <tbody>
+                              <tr
+                                style=3D"
+                                  white-space: nowrap;
+                                  background-color: #ffffff;
+                                "
+                              >
+                                <td
+                                  class=3D"desktopPad"
+                                  height=3D"25"
+                                  style=3D"
+                                    background-color: #ffffff;
+                                    line-height: 25px;
+                                    font-size: 25px;
+                                  "
+                                >
+                                  &nbsp;
+                                </td>
+                              </tr>
+                              <!--[if gte mso 9]>
+</table>
+</td>
+</tr>
+<![endif]-->
+                            </tbody>
+                          </table>
+                        </td>
+                      </tr>
+                      <!-- END SPACING -->
+<tr class=3D"module" id=3D"resourcesTextModule">
+                        <td>
+                          <!--Full Text-->
+                          <table
+                            role=3D"presentation"
+                            width=3D"100%"
+                            border=3D"0"
+                            cellpadding=3D"0"
+                            cellspacing=3D"0"
+                            style=3D"min-width: 100%"
+                          >
+                            <!--[if gte mso 9]>
+<tr>
+<td>
+<table role=3D"presentation" width=3D"650" border=3D"0" cellpadding=3D"0"=
+ cellspacing=3D"0" style=3D"width:650px;">
+<![endif]-->
+                            <tbody>
+                              <tr
+                                style=3D"
+                                  white-space: nowrap;
+                                  background-color: #ffffff;
+                                "
+                              >
+                                <td
+                                  class=3D"stack"
+                                  style=3D"
+                                    color: #000000;
+                                    text-align: left;
+                                    white-space: normal;
+                                    font-family: Inter, Helvetica, Arial,=
+
+                                      sans-serif;
+                                    font-size: 15px;
+                                    line-height: 20px;
+                                    padding-left: 40px;
+                                    padding-right: 40px;
+                                    background-color: #ffffff;
+                                    font-weight: normal;
+                                  "
+                                >
+                                  <div class=3D"content" id=3D"resourcesT=
+ext" style=3D"border-top:1px solid #d9d9d9;padding-top:24px;"><strong cla=
+ss=3D"subheading">Resources and important notices</strong><ul style=3D"ma=
+rgin:4px 0 12px 0;padding-left:20px;list-style-type:disc;"><li style=3D"m=
+argin:0;padding:0;"><a href=3D"https://developers.cloudflare.com/registra=
+r/account-options/renew-domains?utm_source=3Dregistrar&amp;utm_campaign=3D=
+pay-registrar-purchase-transactional" style=3D"color:#ff6633;" target=3D"=
+_blank">Domain renewals</a></li><li style=3D"margin:0;padding:0;"><a href=
+=3D"https://www.cloudflare.com/domain-registration-agreement?utm_medium=3D=
+email&amp;utm_source=3Dregistrar&amp;utm_campaign=3Dpay-registrar-purchas=
+e-transactional" style=3D"color:#ff6633;" target=3D"_blank">Domain Regist=
+ration Agreement</a></li><li style=3D"margin:0;padding:0;"><a href=3D"htt=
+ps://www.cloudflare.com/terms?utm_medium=3Demail&amp;utm_source=3Dregistr=
+ar&amp;utm_campaign=3Dpay-registrar-purchase-transactional" style=3D"colo=
+r:#ff6633;" target=3D"_blank">Self-Service Subscription Agreement</a></li=
+><li style=3D"margin:0;padding:0;"><a href=3D"https://www.cloudflare.com/=
+privacypolicy?utm_medium=3Demail&amp;utm_source=3Dregistrar&amp;utm_campa=
+ign=3Dpay-registrar-purchase-transactional" style=3D"color:#ff6633;" targ=
+et=3D"_blank">Privacy Policy</a></li><li style=3D"margin:0;padding:0;"><a=
+ href=3D"https://www.icann.org/resources/pages/benefits-2013-09-16-en" st=
+yle=3D"color:#ff6633;" target=3D"_blank">Registrant Rights and Responsibi=
+lities</a></li></ul></div>
+                                </td>
+                              </tr>
+                              <!--[if gte mso 9]>
+</table>
+</td>
+</tr>
+<![endif]-->
+                            </tbody>
+                          </table>
+                          <!--/Full Text-->
+                        </td>
+                      </tr>
+                      <!-- END OF SUBHEADLINE -->
+<tr class=3D"module desktopPad spacer">
+                        <td>
+                          <table
+                            role=3D"presentation"
+                            border=3D"0"
+                            cellpadding=3D"0"
+                            cellspacing=3D"0"
+                            style=3D"min-width: 100%"
+                          >
+                            <!--[if gte mso 9]>
+<tr>
+<td>
+<table role=3D"presentation" width=3D"650" border=3D"0" cellpadding=3D"0"=
+ cellspacing=3D"0" style=3D"width:650px;">
+<![endif]-->
+                            <tbody>
+                              <tr
+                                style=3D"
+                                  white-space: nowrap;
+                                  background-color: #ffffff;
+                                "
+                              >
+                                <td
+                                  class=3D"desktopPad"
+                                  height=3D"25"
+                                  style=3D"
+                                    background-color: #ffffff;
+                                    line-height: 25px;
+                                    font-size: 25px;
+                                  "
+                                >
+                                  &nbsp;
+                                </td>
+                              </tr>
+                              <!--[if gte mso 9]>
+</table>
+</td>
+</tr>
+<![endif]-->
+                            </tbody>
+                          </table>
+                        </td>
+                      </tr>
+                      <!-- END SPACING -->
+<tr class=3D"module" id=3D"whyReceivedModule">
+                        <td>
+                          <!--Full Text-->
+                          <table
+                            role=3D"presentation"
+                            width=3D"100%"
+                            border=3D"0"
+                            cellpadding=3D"0"
+                            cellspacing=3D"0"
+                            style=3D"min-width: 100%"
+                          >
+                            <!--[if gte mso 9]>
+<tr>
+<td>
+<table role=3D"presentation" width=3D"650" border=3D"0" cellpadding=3D"0"=
+ cellspacing=3D"0" style=3D"width:650px;">
+<![endif]-->
+                            <tbody>
+                              <tr
+                                style=3D"
+                                  white-space: nowrap;
+                                  background-color: #ffffff;
+                                "
+                              >
+                                <td
+                                  class=3D"stack"
+                                  style=3D"
+                                    color: #000000;
+                                    text-align: left;
+                                    white-space: normal;
+                                    font-family: Inter, Helvetica, Arial,=
+
+                                      sans-serif;
+                                    font-size: 15px;
+                                    line-height: 20px;
+                                    padding-left: 40px;
+                                    padding-right: 40px;
+                                    padding-bottom:24px!important;
+                                    background-color: #ffffff;
+                                    font-weight: normal;
+                                  "
+                                >
+                                  <div class=3D"content" id=3D"whyReceive=
+d"><strong class=3D"subheading">Why am I receiving this email?</strong><p=
+ style=3D"margin:0;">You received this email because a domain was registe=
+red in your account.</p></div>
+                                </td>
+                              </tr>
+                              <!--[if gte mso 9]>
+</table>
+</td>
+</tr>
+<![endif]-->
+                            </tbody>
+                          </table>
+                          <!--/Full Text-->
+                        </td>
+                      </tr>
+                      <!-- END OF SUBHEADLINE -->
+
+                      <!-- FOOTER -->
+
+                      <tr class=3D"module" id=3D"persistentSpacerModule">=
+
+                        <td>
+                          <!--Persistent Spacer-->
+                          <table
+                            role=3D"presentation"
+                            width=3D"100%"
+                            border=3D"0"
+                            cellpadding=3D"0"
+                            cellspacing=3D"0"
+                            style=3D"min-width: 100%"
+                          >
+                            <!--[if gte mso 9]>
+<tr>
+<td>
+<table role=3D"presentation" width=3D"650" border=3D"0" cellpadding=3D"0"=
+ cellspacing=3D"0" style=3D"width:650px;">
+<![endif]-->
+                            <tbody>
+                              <tr
+                                style=3D"
+                                  white-space: nowrap;
+                                  background-color: #f6f6f6;
+                                "
+                              >
+                                <td
+                                  height=3D"25"
+                                  style=3D"
+                                    white-space: normal;
+                                    background-color: #f6f6f6;
+                                    line-height: 25px;
+                                    font-size: 25px;
+                                  "
+                                >
+                                  &nbsp;
+                                </td>
+                              </tr>
+                              <!--[if gte mso 9]>
+</table>
+</td>
+</tr>
+<![endif]-->
+                            </tbody>
+                          </table>
+                          <!--/Persistent Spacer-->
+                        </td>
+                      </tr>
+                      <tr class=3D"module" id=3D"footerModule">
+                        <td>
+                          <!--Footer-->
+                          <table
+                            role=3D"presentation"
+                            width=3D"100%"
+                            border=3D"0"
+                            cellpadding=3D"0"
+                            cellspacing=3D"0"
+                            style=3D"min-width: 100%"
+                          >
+                            <!--[if gte mso 9]>
+<tr>
+<td>
+<table role=3D"presentation" width=3D"650" border=3D"0" cellpadding=3D"0"=
+ cellspacing=3D"0" style=3D"width:650px;">
+<![endif]-->
+                            <tbody>
+                              <tr style=3D"white-space: nowrap">
+                                <td
+                                  class=3D"stack"
+                                  style=3D"
+                                    white-space: normal;
+                                    padding-left: 40px;
+                                    padding-right: 40px;
+                                  "
+                                >
+                                  <div class=3D"snippet" id=3D"footer">
+                                    <table
+                                      role=3D"presentation"
+                                      width=3D"100%"
+                                      border=3D"0"
+                                      cellpadding=3D"0"
+                                      cellspacing=3D"0"
+                                    >
+                                      <tbody>
+                                        <tr>
+                                          <td
+                                            class=3D"footer"
+                                            style=3D"
+                                              font-family: Arial, Helveti=
+ca,
+                                                sans-serif;
+                                              color: #8f8f8f;
+                                              font-size: 13px;
+                                              text-align: center;
+                                            "
+                                          >
+                                            Copyright =C2=A9&nbsp;2026 Cl=
+oudflare,
+                                            Inc.<br />
+                                            101 Townsend Street, San Fran=
+cisco,
+                                            CA 94107<br /><br />
+                                            <a
+                                              href=3D"https://www.cloudfl=
+are.com/"
+                                              style=3D"
+                                                color: #8f8f8f;
+                                                text-decoration: none;
+                                              "
+                                              target=3D"_blank"
+                                              >www.cloudflare.com</a
+                                            >
+                                            &nbsp;|&nbsp;
+                                            <a
+                                              href=3D"https://community.c=
+loudflare.com/"
+                                              style=3D"
+                                                color: #8f8f8f;
+                                                text-decoration: none;
+                                              "
+                                              target=3D"_blank"
+                                              >Community</a
+                                            >
+                                            &nbsp;|&nbsp;
+                                            <a
+                                              href=3D"https://www.cloudfl=
+are.com/privacypolicy/"
+                                              style=3D"
+                                                color: #8f8f8f;
+                                                text-decoration: none;
+                                              "
+                                              target=3D"_blank"
+                                              >Privacy Policy</a
+                                            >
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td
+                                            style=3D"padding-top: 20px"
+                                            align=3D"center"
+                                          >
+                                            <table
+                                              role=3D"presentation"
+                                              border=3D"0"
+                                              cellpadding=3D"0"
+                                              cellspacing=3D"0"
+                                              style=3D"margin-right:auto;=
+margin-left:auto;"
+                                              align=3D"center"
+                                            >
+                                              <tbody>
+                                                <tr>
+                                                  <td
+                                                    width=3D"40"
+                                                    align=3D"center"
+                                                    style=3D"
+                                                      padding-right: 2px;=
+
+                                                      padding-left: 2px;
+                                                    "
+                                                  >
+                                                    <a
+                                                      href=3D"https://www=
+.facebook.com/Cloudflare/"
+                                                      title=3D"Facebook"
+                                                      target=3D"_blank"
+                                                      ><img
+                                                        src=3D"https://in=
+fo.cloudflare.com/rs/713-XSC-918/images/social-icon-fb-email-108px.png"
+                                                        width=3D"36"
+                                                        height=3D"36"
+                                                        alt=3D"Facebook"
+                                                        style=3D"
+                                                          display: block;=
+
+                                                          margin-right: a=
+uto;
+                                                          margin-left: au=
+to;
+                                                          border-style: n=
+one;
+                                                        "
+                                                        constrain=3D"true=
+"
+                                                        imagepreview=3D"f=
+alse"
+                                                    /></a>
+                                                  </td>
+                                                  <td
+                                                    width=3D"40"
+                                                    align=3D"center"
+                                                    style=3D"
+                                                      padding-right: 2px;=
+
+                                                      padding-left: 2px;
+                                                    "
+                                                  >
+                                                    <a
+                                                      href=3D"https://x.c=
+om/Cloudflare"
+                                                      title=3D"X"
+                                                      target=3D"_blank"
+                                                      ><img
+                                                        src=3D"https://in=
+fo.cloudflare.com/rs/713-XSC-918/images/social-icon-twitter-email-108px.p=
+ng"
+                                                        width=3D"36"
+                                                        height=3D"36"
+                                                        alt=3D"X"
+                                                        style=3D"
+                                                          display: block;=
+
+                                                          margin-right: a=
+uto;
+                                                          margin-left: au=
+to;
+                                                          border-style: n=
+one;
+                                                        "
+                                                        constrain=3D"true=
+"
+                                                        imagepreview=3D"f=
+alse"
+                                                    /></a>
+                                                  </td>
+                                                  <td
+                                                    width=3D"40"
+                                                    align=3D"center"
+                                                    style=3D"
+                                                      padding-right: 2px;=
+
+                                                      padding-left: 2px;
+                                                    "
+                                                  >
+                                                    <a
+                                                      href=3D"https://www=
+.linkedin.com/company/cloudflare"
+                                                      title=3D"LinkedIn"
+                                                      target=3D"_blank"
+                                                      ><img
+                                                        src=3D"https://in=
+fo.cloudflare.com/rs/713-XSC-918/images/social-icon-linkedin-email-108px.=
+png"
+                                                        width=3D"36"
+                                                        height=3D"36"
+                                                        alt=3D"LinkedIn"
+                                                        style=3D"
+                                                          display: block;=
+
+                                                          margin-right: a=
+uto;
+                                                          margin-left: au=
+to;
+                                                          border-style: n=
+one;
+                                                        "
+                                                        constrain=3D"true=
+"
+                                                        imagepreview=3D"f=
+alse"
+                                                    /></a>
+                                                  </td>
+                                                </tr>
+                                              </tbody>
+                                            </table>
+                                            <br />
+                                          </td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                  </div>
+                                </td>
+                              </tr>
+                              <!--[if gte mso 9]>
+</table>
+</td>
+</tr>
+<![endif]-->
+                            </tbody>
+                          </table>
+                          <!--/Footer-->
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+                <!-- END FOOTER -->
+
+                <!--/Container-->
+                <!--Full Width Image for Gmail to render desktop version =
+on mobile-->
+                <tr>
+                  <td>
+                    <table
+                      role=3D"presentation"
+                      class=3D"hide"
+                      id=3D"gmailModule"
+                      width=3D"100%"
+                      border=3D"0"
+                      cellpadding=3D"0"
+                      cellspacing=3D"0"
+                      style=3D"min-width: 100%"
+                    >
+                      <tbody>
+                        <tr
+                          style=3D"white-space: nowrap; background-color:=
+ #ffffff"
+                        >
+                          <td
+                            height=3D"1"
+                            class=3D"hide"
+                            style=3D"
+                              min-width: 650px;
+                              opacity: 0;
+                              font-size: 0px;
+                              line-height: 0px;
+                            "
+                          >
+                            <img
+                              alt=3D""
+                              height=3D"1"
+                              width=3D"650"
+                              src=3D"data:image/gif;base64,R0lGODlhAQABAI=
+AAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                              style=3D"
+                                min-width: 650px;
+                                max-height: 0px;
+                                text-decoration: none;
+                                border: none;
+                                -ms-interpolation-mode: bicubic;
+                              "
+                            />
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+                <!--/Full Width Image for Gmail to render desktop version=
+ on mobile-->
+              </tbody>
+            </table>
+            <!--End Body Table-->
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>
+
+----==_mimepart_6af3537e2028d_1037c863427c--
+

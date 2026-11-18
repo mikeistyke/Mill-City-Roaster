@@ -1,0 +1,8 @@
+# robots.txt for millcity10kg.com
+# Allows full search engine indexing of the listing, photos, and specification sheets.
+
+User-agent: *
+Allow: /
+Disallow: /metadata.json
+
+Sitemap: https://millcity10kg.com/sitemap.xml

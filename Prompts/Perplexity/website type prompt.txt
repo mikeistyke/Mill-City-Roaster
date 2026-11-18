@@ -1,0 +1,44 @@
+INSTRUCTION
+Research and recommend the best website type and architecture for selling ONE new-in-crate 2025 Mill City Roasters MCR-10 (10 kg gas coffee roaster) at millcity10kg.com. Compare two builds: (A) static HTML + CSS, and (B) React + Vite + Tailwind CSS. Both are hosted on Cloudflare (Pages or Workers). Pick one and justify it. Then give a build plan covering page structure, lead capture, trust and payment signals, SEO, legal and brand risk, and cost. Cite current, verifiable sources. Mark anything you can't verify as [VERIFY]. Do not invent facts.
+
+CONTEXT
+- Product: a single unit, 2025 Mill City Roasters MCR-10 (Legacy, 2018–2025). New in 3 factory crates (about 1,180, 390 and 280 lb; about 1,850 lb total), never installed or fired.
+- Confirmed facts (seller-verified): country of origin is China. Build year is 2025. Serial number is 4074 (confidential, see INPUT).
+- Origin handling: research how to state "Made in China" accurately and legally on a U.S. reseller website and in listings. This includes CBP marking rules, FTC guidance, and any need to avoid implying a U.S. build. Note that Mill City Roasters markets a Minneapolis presence, so the site must not suggest US manufacture.
+- Asking price: $32,000 USD, fixed price with Best Offer. Free LTL freight within 1,500 miles. Buyer pays beyond that. Contiguous U.S. only. Payment by wire or escrow only. Deposit (about 10%, seller to set) holds the unit for 14 days.
+- Comparison anchors: a new 2026 M-Series 10 kg lists at $47,000 (about $15,000 or 32% more). A used 2021 MCR-10 is about $29,500. Used 2017 is about $19,900.
+- Key specs: 2–12 kg batch (10 kg nominal), about 66 lb/hr, natural gas or propane at 90,000 BTU with 1/2" NPT, 220V single phase on a dedicated 20A circuit, double-walled 430 stainless drum, about 68 x 39 x 76 in and 904 lb, Artisan/Cropster compatible, cooling tray holds about 3 batches.
+- Target buyers: 3–6 kg roasteries moving up to a 10 kg machine, multi-unit café groups, co-ops and incubators, and funded startups. Their main worries are freight, payment risk, buying from a private seller, install cost, warranty status and support.
+- Trust assets available: serial-plate photo, original invoice, CSA label, manual, crate photos, walkaround video, bill of lading inspection process.
+- Seller location: Virginia (origin ZIP to be set).
+- Existing channels: eBay Business & Industrial, dealers (CoffeeTec, Coffee Equipment Pros), Facebook groups, LinkedIn, direct email. The site is a single-listing landing hub to link from all of them.
+- Brand risk: the domain contains the manufacturer's name. Research trademark and nominative fair use limits for resellers, what disclaimers are needed ("independent seller, not affiliated with Mill City Roasters"), and the risk of domain-name disputes (UDRP).
+- Stack constraints: the domain is on Cloudflare. Consider Cloudflare Pages, Workers, Turnstile, Email Routing, Web Analytics, R2 or Images for photos, and Zaraz.
+
+INPUT
+Unit serial number: 4074. Treat it as confidential. Do not recommend publishing the number on the public site. Recommend a photo of the plate behind a "request documents" step, shared with qualified buyers only. Use it only to check Mill City's serial format and warranty process, and to draft a short email to Mill City asking them to confirm build date, origin and warranty status for this serial.
+
+Evaluate these decision factors for a one-item, high-ticket B2B listing:
+1. Page speed and Core Web Vitals with heavy photo and video content
+2. Build and maintenance effort for a non-developer operator
+3. Lead capture: inquiry form, Best Offer form, spam protection, and email or CRM routing
+4. Payment: whether to take payment on the site at all (wire/escrow instructions, deposit invoice, Stripe/PayPal limits on a $32,000 item, escrow services)
+5. SEO for terms like "10 kg coffee roaster for sale", "Mill City MCR-10", "new commercial coffee roaster", plus structured data (Product, Offer, Organization, FAQ), including how to mark up country of origin
+6. Trust: seller identity, address and phone, document gallery, freight and inspection terms
+7. Legal pages: terms of sale, as-is and warranty disclaimer, privacy policy, sales tax, and the trademark disclaimer
+8. Total cost over 12 months (domain, hosting, forms, email, escrow)
+9. Future flexibility: adding a second unit, a blog, or a freight calculator
+
+KEYWORDS
+Mill City Roasters MCR-10, 10 kg commercial coffee roaster for sale, Cloudflare Pages static site, React Vite Tailwind Cloudflare, single-product landing page, high-ticket B2B equipment listing, lead capture form Cloudflare Turnstile, escrow wire payment equipment, Product schema markup, nominative fair use trademark reseller, CBP country of origin marking China, FTC Made in USA rule, LTL freight disclosure
+
+OUTPUT FORMAT
+1. Direct answer (2 sentences): the recommended stack (A or B) and why.
+2. Comparison table: A vs B across the nine factors, with a short verdict per row.
+3. Recommended site map: the pages and sections (hero, price comparison table, specs, photo and video gallery, trust documents, freight and terms, FAQ and objection answers, inquiry and Best Offer form, legal), with a one-line purpose for each.
+4. Cloudflare setup checklist: numbered steps (DNS, Pages or Workers deploy, forms, Turnstile, email routing, analytics, caching and image handling).
+5. Legal and brand risk notes: trademark disclaimer wording (paraphrased, not copied from any source), a recommended "Made in China" statement, and the terms the site needs.
+6. 12-month cost estimate: a table with low and high figures.
+7. Draft email to Mill City Roasters asking them to verify build date, origin and warranty for serial 4074.
+8. Open items: a list of [VERIFY] and [SELLER TO SET] items (warranty, deposit %, origin ZIP, floor price).
+Cite sources inline. Keep the whole answer under 1,200 words, using plain language and no filler.
