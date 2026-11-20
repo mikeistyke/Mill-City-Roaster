@@ -3,7 +3,7 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://millcity10kg.com/</loc>
-    <lastmod>2026-11-17</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -58,6 +58,10 @@
     <image:image>
       <image:loc>https://millcity10kg.com/images/crate-1-12.jpg</image:loc>
       <image:title>Crate 1 (1-3) — 1 of 3 Crates Placard and Fragile Do Not Stack Label</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://millcity10kg.com/images/crate-1-13.jpg</image:loc>
+      <image:title>Crate 1 (1-3) — Delivery Receiving Visual Inspection (Factory Shrink Wrap Intact)</image:title>
     </image:image>
     <image:image>
       <image:loc>https://millcity10kg.com/images/crate-2-01.jpg</image:loc>

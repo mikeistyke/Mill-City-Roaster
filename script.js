@@ -163,6 +163,38 @@
     });
   });
 
+  const conditionProofBtn = document.getElementById("condition-proof-trigger");
+  const conditionProofZoomBtn = document.getElementById("condition-proof-zoom-btn");
+  const crate1OpenTrigger = document.getElementById("crate-1-open-trigger");
+
+  function openCrate1ReceivingPhoto(sourceEl) {
+    if (!crate1OpenTrigger) return;
+    activeFilter = "crate-1";
+    filterTabs.forEach(function (btn) {
+      const isSelected = btn.getAttribute("data-filter") === "crate-1";
+      btn.classList.toggle("is-active", isSelected);
+      btn.setAttribute("aria-selected", String(isSelected));
+    });
+    crateGroups.forEach(function (group) {
+      group.hidden = group.getAttribute("data-crate") !== "crate-1";
+    });
+    updateGalleryCount();
+    openLightbox(crate1OpenTrigger);
+    lastFocusedTrigger = sourceEl || crate1OpenTrigger;
+  }
+
+  if (conditionProofBtn) {
+    conditionProofBtn.addEventListener("click", function () {
+      openCrate1ReceivingPhoto(conditionProofBtn);
+    });
+  }
+
+  if (conditionProofZoomBtn) {
+    conditionProofZoomBtn.addEventListener("click", function () {
+      openCrate1ReceivingPhoto(conditionProofZoomBtn);
+    });
+  }
+
   if (lightboxCloseBtn) {
     lightboxCloseBtn.addEventListener("click", closeLightbox);
   }
@@ -429,7 +461,7 @@
         kicker: "BOL Handling Unit 1 of 3 · NMFC 118060-00 · Class 100",
         title: "Crate 1: Roaster Body (MCR-10-BKBS)",
         lead:
-          "Sealed timber shipping crate housing the primary 10 kg roaster body in Black / Brushed Stainless (verified by the external MCR-10 BODY BLACK/BRUSHED placard and March 27, 2025 packing slip).",
+          "Original timber shipping crate housing the primary 10 kg roaster body in Black / Brushed Stainless (verified by the external MCR-10 BODY BLACK/BRUSHED placard, March 27, 2025 packing slip, and delivery receiving inspection photo).",
         crateDimsIn: "58 × 45 × 78 in",
         crateDimsCm: "147 × 114 × 198 cm",
         weightLb: "1,369.0 lb (66.8%)",
@@ -438,12 +470,12 @@
         compDimsCm: "Carrier BOL + Packing Slip",
         volumeIn: "117.8 cu ft · Do Not Stack",
         volumeMetric: "3.34 m³ · Do Not Stack",
-        photoCount: 12,
+        photoCount: 13,
         contents: [
           "<strong>BOL Description:</strong> Contains 1 Piece MCR 10 — 1 of 3 Roaster Body",
           "<strong>Crate Placard:</strong> <code>MCR-10 BODY BLACK/BRUSHED</code> (finish SKU <code>MCR-10-BKBS</code>)",
           "<strong>Packing Slip Order Line:</strong> 1 × 10kg Coffee Roaster — MCR Series (Black / Brushed), packed 27 Mar 2025",
-          "<strong>Condition Seals:</strong> Sealed timber crate on original pallet; clear/untripped SpotSee ShockWatch impact monitor",
+          "<strong>Receiving Status:</strong> Panel opened once at delivery for visual inspection (full factory shrink wrap intact on pallet), then re-secured with screws; clear SpotSee ShockWatch monitor",
           "<strong>Mill City Spec Sheet:</strong> Serial-matched uncrated dimensions, clearances, and utility hookups available upon request via Mill City support"
         ],
         schematicTag: "CRT 1 OF 3",
@@ -477,7 +509,7 @@
             '<text x="256" y="152" font-family="ui-monospace, monospace" font-size="9.5" fill="#4A4A4A">Class / NMFC / Marks:</text>' +
             '<text x="256" y="168" font-family="ui-monospace, monospace" font-size="10" fill="#111111">100 · 118060-00</text>' +
             '<text x="256" y="186" font-family="ui-monospace, monospace" font-size="9.5" font-weight="600" fill="#B85A23">DO NOT STACK PALLETS</text>' +
-            '<text x="340" y="234" text-anchor="middle" font-family="ui-monospace, monospace" font-size="9.5" fill="#4A4A4A">Sealed 27 Mar 2025 · ShockWatch Clear</text>' +
+            '<text x="340" y="234" text-anchor="middle" font-family="ui-monospace, monospace" font-size="9.5" fill="#4A4A4A">Inspected &amp; Re-secured · ShockWatch Clear</text>' +
             "</svg>"
           );
         }
@@ -488,7 +520,7 @@
         kicker: "BOL Handling Unit 2 of 3 · NMFC 118060-00 · Class 100",
         title: "Crate 2: Cooling Tray (MCR-10 COOL)",
         lead:
-          "Sealed timber crate housing the 10 kg cooling tray assembly in Black / Brushed Stainless (verified by the external MCR-10 COOL BLACK/BRUSHED placard and carrier BOL).",
+          "Timber crate housing the 10 kg cooling tray assembly in Black / Brushed Stainless (verified by the external MCR-10 COOL BLACK/BRUSHED placard and carrier BOL).",
         crateDimsIn: "38 × 36 × 54 in",
         crateDimsCm: "97 × 91 × 137 cm",
         weightLb: "403.0 lb (19.7%)",
@@ -502,7 +534,7 @@
           "<strong>BOL Description:</strong> Contains 1 Piece MCR 10 — 2 of 3 Cooling Tray",
           "<strong>Crate Placard:</strong> <code>MCR-10 COOL BLACK/BRUSHED</code>",
           "<strong>Published Mill City Spec:</strong> Cooling tray holds up to 3 full batches; cools 2nd-crack roasts in under 4 minutes",
-          "<strong>Condition Seals:</strong> Sealed plywood crate on original pallet; matching March 27, 2025 packing slip attached",
+          "<strong>Crate Condition:</strong> Original timber crate on Mill City pallet; matching March 27, 2025 packing slip attached",
           "<strong>Mill City Spec Sheet:</strong> Serial-matched uncrated tray/fan layout specs available upon request via Mill City support"
         ],
         schematicTag: "CRT 2 OF 3",
@@ -542,7 +574,7 @@
         kicker: "BOL Handling Unit 3 of 3 · NMFC 118060-00 · Class 100",
         title: "Crate 3: Chaff Collector & Included Hardware",
         lead:
-          "Sealed timber crate bearing the MCR-10 CHAFF BLACK/BRUSHED placard and carrier BOL designation 3 of 3 Chaff Collector, accompanied by the factory-packed install and Layout S venting hardware.",
+          "Timber crate bearing the MCR-10 CHAFF BLACK/BRUSHED placard and carrier BOL designation 3 of 3 Chaff Collector, accompanied by the factory-packed install and Layout S venting hardware.",
         crateDimsIn: "34 × 34 × 70 in",
         crateDimsCm: "86 × 86 × 178 cm",
         weightLb: "278.0 lb (13.6%)",
