@@ -6,3 +6,10 @@ Allow: /
 Disallow: /metadata.json
 
 Sitemap: https://millcity10kg.com/sitemap.xml
+
+
+User-agent: *
+Allow: /
+Disallow: /cdn-cgi/
+
+Sitemap: https://millcity10kg.com/sitemap.xml
