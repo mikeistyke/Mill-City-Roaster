@@ -302,6 +302,47 @@
 
   let lastCompiledSummary = "";
 
+  function describePageUrl(value) {
+    if (!value) return "Not available";
+    try {
+      const url = new URL(value);
+      return url.origin + url.pathname;
+    } catch (error) {
+      return "Not available";
+    }
+  }
+
+  function collectSubmissionMetadata() {
+    const pageUrl = new URL(window.location.href);
+    const attributionKeys = [
+      "utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content", "utm_id",
+      "gclid", "gbraid", "wbraid", "fbclid", "msclkid", "ttclid"
+    ];
+    const attribution = attributionKeys
+      .filter(function (key) { return pageUrl.searchParams.has(key); })
+      .map(function (key) {
+        return key + "=" + pageUrl.searchParams.get(key).slice(0, 200);
+      });
+    const viewportWidth = window.innerWidth || 0;
+    const screenWidth = window.screen && window.screen.width ? window.screen.width : 0;
+    const deviceWidth = screenWidth || viewportWidth;
+    let timeZone = "Not available";
+    try {
+      timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone || timeZone;
+    } catch (error) {}
+
+    return [
+      "Submitted at (UTC): " + new Date().toISOString(),
+      "Page: " + describePageUrl(pageUrl.href),
+      "Referrer: " + describePageUrl(document.referrer),
+      "Campaign / ad click IDs: " + (attribution.length ? attribution.join("; ") : "None present"),
+      "Browser language: " + (navigator.language || "Not available"),
+      "Time zone: " + timeZone,
+      "Device class: " + (deviceWidth ? (deviceWidth < 768 ? "mobile-sized" : deviceWidth < 1024 ? "tablet-sized" : "desktop-sized") : "Not available"),
+      "Screen / viewport width: " + (screenWidth || "Not available") + " / " + (viewportWidth || "Not available") + " px"
+    ].join("\n");
+  }
+
   function setFieldError(inputId, errorId, message) {
     const inputEl = document.getElementById(inputId);
     const errorEl = document.getElementById(errorId);
@@ -362,12 +403,14 @@
       }
 
       const subject = "2025 Mill City MCR-10 Inquiry — " + nameVal;
+      const submissionMetadata = collectSubmissionMetadata();
       lastCompiledSummary =
         "Inquiry for: 2025 Mill City MCR-10 ($32,000, Virginia)\n" +
         "Name: " + nameVal + "\n" +
         "Email: " + emailVal + "\n" +
         "Phone: " + (phoneVal || "Not provided") + "\n\n" +
-        "Message:\n" + messageVal;
+        "Message:\n" + messageVal + "\n\n" +
+        "Submission and attribution details:\n" + submissionMetadata;
 
       if (mailtoDispatchLink) {
         mailtoDispatchLink.href =
